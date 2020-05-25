@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-Hans">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Title</title>
+  <link rel="stylesheet" href="./src/style/index.css">
+  <link rel="stylesheet" href="./src/style/tomorrow-night-eighties.css">
+
+</head>
+
+<body>
+  <h2>
+    Practice1
+  </h2>
+  <p>现有 <code>constant.js</code> 文件中存储了aws服务信息如下</p>
+  <pre><code class="lang-javascript">
+    const ADDRESS = 'https://console.amazonaws.cn'
+    const PORT = 4455
+    const PATH = '/api'
+    const REGION = 'cn-north-1'
+  </code></pre>
+  <p>要求，在 <code>utils.js</code> 方法中实现 <code>getURL</code> 方法，实现通过<code>(address, port, path)</code>获取url（即拼接，端口号前需要加:），并在 <code>index.js</code> 中使用该方法结合aws服务信息导出 url 和 region，满足测试。</p>
+  <p><strong>要求如下</strong></p>
+  <ol>
+    <li>使用ES6模块化进行实现</li>
+    <li><code>index.js</code>中导出的模块名为 <code>url</code> 和 <code>region</code></li>
+    <li><code>getURL</code> 方法的导出需要采用默认方式 (default)</li>
+  </ol>
+  <p>练习文件 <code>/src/practice1/</code>中</p>
+  <hr/>
+  <h2>
+    Practice2
+  </h2>
+  <p>创建两个类：<code>Person</code> 与 <code>Student</code>, <code>Student</code> 继承于 <code>Person</code> 且满足以下要求：</p>
+  <ol>
+    <li><code>Person</code> 和 <code>Student</code> 构造实例时需要传入姓名字符串作为实例的姓名属性name，<code>Student</code>还需要传入班级字符串作为实例的班级属性className。</li>
+    <pre><code class="lang-javascript">
+      const kevin = new Person('Kevin')
+      kevin.name // => Kevin
+      const winnie = new Student('Winnie', 'class1')
+      winnie.name // => Winnie
+      winnie.className // => class1
+    </code></pre>
+    <li><code>Person</code>具有 move 方法, 实例调用时输出(console.log)："XXX(name) is moving", <code>Student</code>还具有 study 方法,实例调用时先调用 move 方法，再输出(console.log)："XXX(name) is studying in XXX(className)"</li>
+    <pre><code class="lang-javascript">
+      kevin.move() // => Kevin is moving
+      winnie.study() // => Winnie is moving & Winnie is studying in class1
+    </code></pre>
+    <li><code>study</code> 方法无论怎样被调用 <code>this</code> 都需要指向声明的实例</li>
+    <pre><code class="lang-javascript">
+      const winnie = new Student('Winnie', 'class1')
+      const { study } = winnie
+      study() // => Winnie is moving & Winnie is studying in class1
+    </code></pre>
+  </ol>
+  <p>练习文件 <code>/src/practice2</code>中</p>
+  <hr/>
+  <h2>
+    Practice3
+  </h2>
+  <p>现有一个随机古诗词接口如下：</p>
+  <pre><code class="lang-javascript">
+    // 使用 GET 请求 url：'https://v1.jinrishici.com/all.json' 可返回如下内容：
+    {
+      "content" : "天清一雁远，海阔孤帆迟。",
+      "origin" : "送张舍人之江东",
+      "author" : "李白",
+      "category" : "古诗文-抒情-离别"
+    }
+  </code></pre>
+  <p>请使用Fetch api 实现 <code>getPoetry</code> 方法请求次接口获取古诗词，并返回如下内容</p>
+  <pre><code class="lang-javascript">
+    ['送张舍人之江东', '李白', '天清一雁远，海阔孤帆迟。']
+  </code></pre>
+  <p>尝试使用 Promise 和 async 函数两种写法，并体验不同，并包含错误处理</p>
+  <p>练习文件 <code>/src/practice3</code>中</p>
+  <h3>请尽可能使用课程和资料中所学的内容实现上述需求, 并使用 <code>npm run test</code> 命令通过测试</h3>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- <script src="src/practice3/index.js"></script> -->
+</body>
+
+</html>
